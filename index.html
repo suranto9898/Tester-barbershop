@@ -60,6 +60,64 @@
             padding: 8px 0; font-size: 12px; font-weight: 600; z-index: 11;
         }
 
+body { 
+    font-family: 'Poppins', sans-serif; 
+    /* Memanggil file lokal */
+    background-image: url('background.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Gambar tetap diam saat di-scroll */
+    background-repeat: no-repeat;
+    background-color: var(--bs-white); /* Warna cadangan jika gambar tidak muncul */
+    margin: 0; 
+    padding-bottom: 50px; 
+    overflow-x: hidden; 
+}
+
+/* Tambahan: Agar konten utama lebih menonjol di atas background */
+.main-wrapper { 
+    padding: 0 20px; 
+    max-width: 500px; 
+    margin: -30px auto 0; 
+    position: relative; 
+    z-index: 30; 
+}
+
+/* Efek Tembus Pandang (Glassmorphism) */
+.info-bar, .form-card {
+    /* Menggunakan RGBA: 255,255,255 adalah Putih, 0.85 adalah tingkat transparansi */
+    background: rgba(255, 255, 255, 0.85) !important; 
+    
+    /* Efek Blur di belakang kartu agar background tidak terlalu mengganggu teks */
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); /* Dukungan untuk Safari */
+    
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Garis tepi halus agar terlihat mewah */
+    margin-bottom: 20px;
+    padding: 25px;
+}
+
+/* Pastikan item layanan juga sedikit transparan saat tidak dipilih */
+.service-item {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Tetap buat item yang dipilih berwarna solid agar kontras */
+.service-item.selected {
+    background: var(--bs-red) !important;
+    color: white !important;
+}
+
+.service-item.selected .service-name, 
+.service-item.selected .promo-price,
+.service-item.selected div {
+    color: white !important;
+}
+
+
         .status-badge { padding: 5px 12px; border-radius: 20px; font-size: 10px; font-weight: 800; margin-top: 8px; }
         .status-open { background: #2ecc71; color: white; }
         .status-closed { background: var(--bs-red); color: white; }
@@ -360,7 +418,7 @@ function sendBooking() {
     const date = document.getElementById('book-date').value;
     const time = document.getElementById('book-time').value;
     if(!name || !date || !time || selectedServices.length === 0) { alert("Lengkapi data!"); return; }
-    const pesan = `*BOOKING CLASSIC BARBER*\n--------------------------\n*Nama:* ${name}\n*Barber:* ${barber}\n*Layanan:* \n- ${selectedServices.join('\n- ')}\n*Jadwal:* ${date} @ ${time}\n--------------------------`;
+    const pesan = `*MOHON KONFIRMASINYA BOOKING CLASSIC BARBER*\n--------------------------\n*Nama:* ${name}\n*Barber:* ${barber}\n*Layanan:* \n- ${selectedServices.join('\n- ')}\n*Jadwal:* ${date} @ ${time}\n--------------------------`;
     window.open(`https://wa.me/${CONFIG.WA_PHONE}?text=${encodeURIComponent(pesan)}`, '_blank');
 }
 
@@ -377,9 +435,9 @@ setInterval(() => {
 const hr = new Date().getHours();
 const elStatus = document.getElementById('shop-status');
 if(hr >= 10 && hr < 17) {
-    elStatus.innerText = "● SEKARANG BUKA"; elStatus.className = "status-badge status-open";
+    elStatus.innerText = "● BARBERSHOP BUKA"; elStatus.className = "status-badge status-open";
 } else {
-    elStatus.innerText = "● SEKARANG TUTUP"; elStatus.className = "status-badge status-closed";
+    elStatus.innerText = "● BARBERSHOP TUTUP"; elStatus.className = "status-badge status-closed";
 }
 
 updateClock();
