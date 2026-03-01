@@ -70,79 +70,38 @@
             position: relative; z-index: 30; 
         }
 
-.barber-facilities {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 15px;
-    border-top: 1px dashed #eee;
-    padding-top: 12px;
-}
-
-.barber-facilities span {
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--bs-blue);
-    background: #f0f7ff;
-    padding: 5px 12px;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    border: 1px solid rgba(29, 53, 87, 0.1);
-}
-
-.barber-facilities span i {
-    color: var(--bs-red); /* Memberi aksen merah pada ikon */
-    font-size: 11px;
-}
-
-.disclaimer-box {
-    margin-top: 25px;
-    padding: 15px;
-    background: #fff9f9; /* Merah sangat muda agar tidak terlalu mencolok */
-    border: 1px solid #fee;
-    border-radius: 12px;
-}
-
-.disclaimer-box h4 {
-    margin: 0 0 8px 0;
-    font-size: 11px;
-    color: var(--bs-red);
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-.disclaimer-box ul {
-    margin: 0;
-    padding-left: 18px;
-}
-
-.disclaimer-box li {
-    font-size: 10px;
-    color: #888;
-    line-height: 1.5;
-    margin-bottom: 5px;
-}
-
-
-        /* BAR 1: DESKRIPSI */
+        /* BAR 1: DESKRIPSI, EXPERIENCE & FASILITAS */
         .info-bar {
             background: white; padding: 20px; border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.06);
             border-left: 5px solid var(--bs-red);
-            margin-bottom: 20px; /* Jarak ke form */
+            margin-bottom: 20px;
         }
         .info-bar h3 { margin: 0 0 8px 0; font-size: 16px; color: var(--bs-blue); font-weight: 800; }
         .info-bar p { font-size: 12px; line-height: 1.6; color: #555; margin: 0; }
 
+        .experience-badge {
+            margin-top: 12px; display: flex; align-items: center; gap: 10px; 
+            background: #fffcf0; padding: 8px 12px; border-radius: 8px; 
+            border: 1px solid #f9ebae;
+        }
+
+        .barber-facilities {
+            display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;
+            border-top: 1px dashed #eee; padding-top: 12px;
+        }
+        .barber-facilities span {
+            font-size: 10px; font-weight: 700; color: var(--bs-blue);
+            background: #f0f7ff; padding: 5px 12px; border-radius: 50px;
+            display: flex; align-items: center; gap: 5px; border: 1px solid rgba(29, 53, 87, 0.1);
+        }
+        .barber-facilities span i { color: var(--bs-red); font-size: 11px; }
+
         /* BAR 2: FORM BOOKING */
         .form-card { 
             background: white; padding: 25px; border-radius: 15px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 20px;
         }
-
         .form-group { margin-bottom: 18px; }
         label { display: block; font-size: 11px; font-weight: 800; margin-bottom: 8px; color: var(--bs-blue); text-transform: uppercase; }
         input, select, .service-trigger { 
@@ -150,7 +109,6 @@
             font-size: 14px; box-sizing: border-box; background: #fafafa; outline: none;
         }
 
-        /* SERVICES LIST */
         #service-list-container { 
             display: none; gap: 8px; margin-top: 10px; 
             max-height: 300px; overflow-y: auto; padding: 5px;
@@ -162,14 +120,13 @@
             align-items: center; cursor: pointer; margin-bottom: 8px;
         }
         .service-item.selected { border-color: var(--bs-red); background: #fff5f5; }
-
         .service-name { font-size: 14px; font-weight: 700; color: var(--bs-blue); }
         .promo-price { font-weight: 800; color: var(--bs-red); font-size: 14px; }
 
         /* LOOKBOOK */
         .lookbook-title { font-size: 11px; font-weight: 800; color: #999; text-transform: uppercase; margin-bottom: 10px; display: block; }
-        .lookbook-slider { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
-        .lookbook-item { flex: 0 0 160px; height: 120px; border-radius: 12px; overflow: hidden; position: relative; background: #eee; }
+        .lookbook-slider { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 15px; scrollbar-width: none; }
+        .lookbook-item { flex: 0 0 160px; height: 120px; border-radius: 12px; overflow: hidden; position: relative; }
         .lookbook-item img { width: 100%; height: 100%; object-fit: cover; }
         .lookbook-tag { position: absolute; bottom: 0; width: 100%; background: rgba(29,53,87,0.8); color: white; font-size: 9px; padding: 4px 0; text-align: center; }
 
@@ -179,10 +136,22 @@
             cursor: pointer; box-shadow: 0 5px 15px rgba(29,53,87,0.3); text-transform: uppercase;
         }
 
-        .social-footer { display: flex; justify-content: center; gap: 15px; margin-top: 25px; }
+        /* DISCLAIMER BOX */
+        .disclaimer-box {
+            margin: 20px 0; padding: 18px; background: #fff9f9; 
+            border: 1px solid #fee1e1; border-radius: 12px; text-align: left;
+        }
+        .disclaimer-box h4 {
+            margin: 0 0 10px 0; font-size: 12px; color: var(--bs-red);
+            font-weight: 800; text-transform: uppercase; display: flex; align-items: center; gap: 8px;
+        }
+        .disclaimer-box ul { margin: 0; padding-left: 20px; }
+        .disclaimer-box li { font-size: 11px; color: #666; line-height: 1.6; margin-bottom: 6px; font-weight: 400; }
+
+        .social-footer { display: flex; justify-content: center; gap: 15px; margin: 20px 0; }
         .social-icon { width: 40px; height: 40px; background: white; color: var(--bs-blue); display: flex; align-items: center; justify-content: center; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-decoration: none; }
 
-        footer { text-align: center; padding: 30px 10px; font-size: 9px; color: #bbb; letter-spacing: 2px; }
+        footer { text-align: center; padding: 20px 10px; font-size: 9px; color: #bbb; letter-spacing: 2px; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -209,14 +178,17 @@
 <div class="main-wrapper">
     <div class="info-bar">
         <h3><i class="fas fa-cut"></i> Premium Grooming Experience</h3>
-        <p>
-            Nikmati layanan potong rambut kelas dunia dengan suasana klasik yang nyaman. Kami berkomitmen memberikan hasil terbaik untuk penampilan Anda.
-        </p>
+        <p>Nikmati layanan potong rambut kelas dunia dengan suasana klasik yang nyaman. Kami berkomitmen memberikan hasil terbaik untuk penampilan Anda.</p>
         
+        <div class="experience-badge">
+            <i class="fas fa-certificate" style="color: #d4a017; font-size: 14px;"></i>
+            <span style="font-size: 11px; font-weight: 700; color: #856404;">Capster Berpengalaman & Tersertifikasi</span>
+        </div>
+
         <div class="barber-facilities">
             <span><i class="fas fa-wifi"></i> Free WiFi</span>
             <span><i class="fas fa-wind"></i> Full AC</span>
-            <span><i class="fas fa-no-smoking"></i> No Smoking Area</span>
+            <span><i class="fas fa-no-smoking"></i> No Smoking</span>
         </div>
     </div>
 
@@ -261,22 +233,30 @@
         <button class="btn-confirm" onclick="sendBooking()">Pesan Sekarang</button>
     </div>
 
-    <div class="social-footer">
-        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+    <div class="disclaimer-box">
+        <h4><i class="fas fa-exclamation-circle"></i> Catatan Penting:</h4>
+        <ul>
+            <li>Mohon datang 10 menit sebelum jadwal yang ditentukan.</li>
+            <li>Keterlambatan lebih dari 15 menit dapat membatalkan antrean Anda.</li>
+            <li>Harga yang tertera adalah estimasi, total akhir bergantung pada layanan tambahan.</li>
+        </ul>
     </div>
 
-    <footer>
-    <div class="disclaimer-box">
-    <h4><i class="fas fa-exclamation-circle"></i> Catatan Penting:</h4>
-    <ul>
-        <li>Mohon datang 10 menit sebelum jadwal yang ditentukan.</li>
-        <li>Keterlambatan lebih dari 15 menit dapat membatalkan antrean Anda.</li>
-        <li>Harga yang tertera adalah estimasi, total akhir bergantung pada layanan tambahan di tempat.</li>
-    </ul>
+    <div class="social-footer">
+    <a href="https://instagram.com/username_anda" target="_blank" class="social-icon">
+        <i class="fab fa-instagram"></i>
+    </a>
+    
+    <a href="https://tiktok.com/@username_anda" target="_blank" class="social-icon">
+        <i class="fab fa-tiktok"></i>
+    </a>
+    
+    <a href="https://facebook.com/nama_halaman_anda" target="_blank" class="social-icon">
+        <i class="fab fa-facebook-f"></i>
+    </a>
 </div>
 
+    <footer>
         &copy; 2026 Classic Barber Shop <br> Modern Style for Gentlemen
     </footer>
 </div>
@@ -309,24 +289,43 @@ async function fetchData() {
             skipEmptyLines: true,
             complete: function(results) {
                 container.innerHTML = "";
+                barberSelect.innerHTML = '<option value="Siapa Saja">💈 Siapa Saja (Tersedia)</option>';
+
                 results.data.forEach(item => {
+                    // 1. LOGIKA LAYANAN (SERVICE)
                     if(item.nama && item.harga) {
                         const hAsli = parseInt(item.harga) || 0;
                         const hPromo = parseInt(item.promo) || 0;
                         const finalPrice = hPromo > 0 ? hPromo : hAsli;
-                        
+
+                        let priceHTML = "";
+                        if (hPromo > 0) {
+                            priceHTML = `
+                                <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end; justify-content: center;">
+                                    <span style="font-size: 10px; color: #aaa; text-decoration: line-through;">Rp ${hAsli.toLocaleString()}</span>
+                                    <span class="promo-price" style="line-height: 1.2;">Rp ${hPromo.toLocaleString()}</span>
+                                    <span style="background: var(--bs-red); color: white; font-size: 8px; padding: 2px 6px; border-radius: 4px; font-weight: 800; margin-top: 4px; display: inline-block; width: fit-content;">${item.promo_tag || 'PROMO'}</span>
+                                </div>`;
+                        } else {
+                            priceHTML = `<div class="promo-price" style="display: flex; align-items: center;">Rp ${hAsli.toLocaleString()}</div>`;
+                        }
+
                         const card = document.createElement('div');
                         card.className = 'service-item';
                         card.onclick = () => selectService(card, `${item.nama} (Rp ${finalPrice.toLocaleString()})`);
+                        
                         card.innerHTML = `
-                            <div>
+                            <div style="flex: 1; padding-right: 10px; display: flex; flex-direction: column; justify-content: center;">
                                 <div class="service-name">${item.nama}</div>
-                                <div style="font-size:10px; color:#999;">${item.kategori || 'UMUM'}</div>
+                                <div style="font-size: 11px; color: #777; margin-top: 2px; line-height: 1.3;">${item.layanan || ''}</div>
+                                <div><span style="font-size: 9px; background: #eee; padding: 2px 6px; border-radius: 4px; font-weight: 700; margin-top: 6px; display: inline-block; color: #555;">${item.kategori || 'UMUM'}</span></div>
                             </div>
-                            <div class="promo-price">Rp ${finalPrice.toLocaleString()}</div>
+                            ${priceHTML}
                         `;
                         container.appendChild(card);
                     }
+
+                    // 2. LOGIKA LIST BARBER
                     if(item.nama_barber) {
                         const opt = document.createElement('option');
                         opt.value = item.nama_barber;
@@ -360,16 +359,11 @@ function sendBooking() {
     const barber = document.getElementById('barber-select').value;
     const date = document.getElementById('book-date').value;
     const time = document.getElementById('book-time').value;
-
-    if(!name || !date || !time || selectedServices.length === 0) {
-        alert("Lengkapi data!"); return;
-    }
-
+    if(!name || !date || !time || selectedServices.length === 0) { alert("Lengkapi data!"); return; }
     const pesan = `*BOOKING CLASSIC BARBER*\n--------------------------\n*Nama:* ${name}\n*Barber:* ${barber}\n*Layanan:* \n- ${selectedServices.join('\n- ')}\n*Jadwal:* ${date} @ ${time}\n--------------------------`;
     window.open(`https://wa.me/${CONFIG.WA_PHONE}?text=${encodeURIComponent(pesan)}`, '_blank');
 }
 
-// Slideshow & Status
 let current = 0;
 setInterval(() => {
     const slides = document.querySelectorAll('.bg-slide');
