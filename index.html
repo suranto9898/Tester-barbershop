@@ -284,7 +284,7 @@
             <label>Waktu Reservasi</label>
             <div style="display: flex; gap: 10px;">
                 <input type="date" id="book-date">
-                <input type="time" id="book-time">
+                <input type="time" id="book-time" min="10:00" max="21:00">
             </div>
         </div>
 
@@ -348,6 +348,12 @@ const CONFIG = {
 
 let selectedServices = [];
 
+// SET TANGGAL MINIMAL HARI INI SAAT HALAMAN DIMUAT
+document.addEventListener("DOMContentLoaded", function() {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('book-date').setAttribute('min', today);
+});
+
 function updateClock() {
     const now = new Date();
     const options = { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' };
@@ -390,7 +396,6 @@ async function fetchData() {
                         const card = document.createElement('div');
                         card.className = 'service-item';
                         
-                        // LOGIKA BARU: MENGAMBIL KATEGORI DARI SPREADSHEET UNTUK PESAN WA
                         const categoryText = item.kategori ? `[${item.kategori.toUpperCase()}] ` : '';
                         card.onclick = () => selectService(card, `${categoryText}${item.nama} (Rp ${finalPrice.toLocaleString()})`);
                         
@@ -428,7 +433,7 @@ function selectService(el, str) {
     document.getElementById('selected-count').innerText = selectedServices.length > 0 ? `${selectedServices.length} Dipilih` : "Pilih menu...";
 }
 
-// LOGIKA ANIMASI DROPDOWN BARU
+// LOGIKA ANIMASI DROPDOWN
 function toggleServices() {
     const c = document.getElementById('service-list-container');
     const icon = document.getElementById('service-icon');
@@ -455,7 +460,6 @@ function closeWarningModal() {
     setTimeout(() => { modal.style.display = 'none'; }, 300);
 }
 
-// MENGIRIM PESAN KE WHATSAPP (KATEGORI SUDAH OTOMATIS MENEMPEL DI LAYANAN)
 function sendBooking() {
     const name = document.getElementById('cust-name').value;
     const barber = document.getElementById('barber-select').value;
@@ -468,6 +472,20 @@ function sendBooking() {
     }
     if(selectedServices.length === 0) {
         showWarningModal("Pilih minimal 1 Layanan Service (Menu) yang ingin di-booking.");
+        return;
+    }
+
+    // LOGIKA VALIDASI WAKTU (Jam Operasional 10:00 - 21:00)
+    if (time < "10:00" || time > "21:00") {
+        showWarningModal("Jam operasional Classic Barber adalah pukul 10:00 - 21:00 WIB. Mohon pilih waktu di rentang tersebut.");
+        return;
+    }
+
+    // LOGIKA VALIDASI TANGGAL & WAKTU (Mencegah masa lalu)
+    const now = new Date();
+    const selectedDateTime = new Date(`${date}T${time}`);
+    if (selectedDateTime < now) {
+        showWarningModal("Waktu yang Anda pilih sudah lewat. Silakan pilih waktu yang valid.");
         return;
     }
 
