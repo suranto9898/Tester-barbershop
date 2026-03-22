@@ -84,65 +84,31 @@
             padding: 25px;
         }
 
-/* DISCLAIMER BOX MODERN CLASSIC */
-.disclaimer-box {
-    margin: 20px 0;
-    padding: 22px;
-    background: rgba(255, 255, 255, 0.7) !important; /* Lebih transparan */
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border-radius: 18px;
-    border: 1px solid rgba(230, 57, 70, 0.2); /* Border tipis warna merah khas barber */
-    text-align: left;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-}
+        /* DISCLAIMER BOX MODERN CLASSIC */
+        .disclaimer-box {
+            margin: 20px 0; padding: 22px;
+            background: rgba(255, 255, 255, 0.7) !important;
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-radius: 18px; border: 1px solid rgba(230, 57, 70, 0.2);
+            text-align: left; box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
 
-.disclaimer-box h4 {
-    margin: 0 0 12px 0;
-    font-size: 13px;
-    color: var(--bs-red);
-    font-weight: 800;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    letter-spacing: 0.5px;
-}
-
-.disclaimer-box h4 i {
-    font-size: 16px;
-}
-
-.disclaimer-box ul {
-    margin: 0;
-    padding-left: 0;
-    list-style: none; /* Hapus bullet point standar */
-}
-
-.disclaimer-box li {
-    font-size: 11.5px;
-    color: #444;
-    line-height: 1.7;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-}
-
-/* Tambahkan ikon check kecil sebagai pengganti bullet */
-.disclaimer-box li::before {
-    content: "\f058"; /* Ikon check-circle dari FontAwesome */
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-    color: var(--bs-blue);
-    font-size: 12px;
-    margin-top: 2px;
-}
-
-.disclaimer-box li:last-child {
-    margin-bottom: 0;
-}
-
+        .disclaimer-box h4 {
+            margin: 0 0 12px 0; font-size: 13px; color: var(--bs-red);
+            font-weight: 800; text-transform: uppercase; display: flex;
+            align-items: center; gap: 10px; letter-spacing: 0.5px;
+        }
+        .disclaimer-box h4 i { font-size: 16px; }
+        .disclaimer-box ul { margin: 0; padding-left: 0; list-style: none; }
+        .disclaimer-box li {
+            font-size: 11.5px; color: #444; line-height: 1.7;
+            margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px;
+        }
+        .disclaimer-box li::before {
+            content: "\f058"; font-family: "Font Awesome 6 Free";
+            font-weight: 900; color: var(--bs-blue); font-size: 12px; margin-top: 2px;
+        }
+        .disclaimer-box li:last-child { margin-bottom: 0; }
 
         .info-bar { border-left: 5px solid var(--bs-red); }
         .info-bar h3 { margin: 0 0 8px 0; font-size: 16px; color: var(--bs-blue); font-weight: 800; }
@@ -170,46 +136,39 @@
         label { display: block; font-size: 11px; font-weight: 800; margin-bottom: 8px; color: var(--bs-blue); text-transform: uppercase; }
         input, select, .service-trigger { 
             width: 100%; padding: 14px; border: 1.5px solid #eee; border-radius: 10px; 
-            font-size: 14px; box-sizing: border-box; background: #fafafa; outline: none;
+            font-size: 14px; box-sizing: border-box; background: #fafafa; outline: none; transition: 0.3s;
         }
+        input:focus, select:focus, .service-trigger:hover { border-color: var(--bs-blue); }
 
-.maps-card {
-    background: rgba(255, 255, 255, 0.85) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 15px;
-    margin-bottom: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
+        .maps-card {
+            background: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px; padding: 15px; margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .maps-container { width: 100%; height: 200px; border-radius: 12px; overflow: hidden; border: 1px solid #eee; }
+        .maps-container iframe { width: 100%; height: 100%; border: 0; }
 
-.maps-container {
-    width: 100%;
-    height: 200px;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid #eee;
-}
-
-.maps-container iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
-
+        /* ANIMASI DROPDOWN LAYANAN */
         #service-list-container { 
-            display: none; gap: 8px; margin-top: 10px; 
-            max-height: 300px; overflow-y: auto; padding: 5px;
-            border-top: 1px dashed #eee; padding-top: 15px;
+            display: flex; flex-direction: column; gap: 8px; 
+            max-height: 0; overflow: hidden; opacity: 0; padding: 0 5px;
+            transition: max-height 0.4s ease, opacity 0.4s ease, margin 0.4s ease;
         }
+        #service-list-container.show {
+            max-height: 500px; opacity: 1; margin-top: 15px; 
+            overflow-y: auto; padding-top: 10px; border-top: 1px dashed #eee;
+        }
+        
+        #service-icon { transition: transform 0.3s ease; }
+        #service-icon.rotate { transform: rotate(180deg); }
 
         .service-item {
             background: rgba(255, 255, 255, 0.5); border: 1.2px solid #f0f0f0; border-radius: 12px;
             padding: 12px; display: flex; justify-content: space-between;
-            align-items: center; cursor: pointer; margin-bottom: 8px;
+            align-items: center; cursor: pointer; margin-bottom: 8px; transition: 0.2s;
         }
+        .service-item:active { transform: scale(0.98); }
         .service-item.selected { background: var(--bs-red) !important; color: white !important; border-color: var(--bs-red); }
         .service-item.selected * { color: white !important; }
 
@@ -231,12 +190,34 @@
             background: var(--bs-blue); color: white; width: 100%; padding: 18px;
             border: none; border-radius: 12px; font-weight: 800; font-size: 15px;
             cursor: pointer; box-shadow: 0 5px 15px rgba(29,53,87,0.3); text-transform: uppercase;
+            transition: 0.2s; margin-top: 10px;
         }
+        .btn-confirm:active { transform: scale(0.98); }
 
         .social-footer { display: flex; justify-content: center; gap: 15px; margin: 20px 0; }
         .social-icon { width: 40px; height: 40px; background: white; color: var(--bs-blue); display: flex; align-items: center; justify-content: center; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-decoration: none; }
 
         footer { text-align: center; padding: 20px 10px; font-size: 9px; color: #bbb; letter-spacing: 2px; text-transform: uppercase; }
+
+        /* CUSTOM WARNING MODAL */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+            display: none; align-items: center; justify-content: center;
+            z-index: 3000; opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal-overlay.show { opacity: 1; }
+        .modal-box {
+            background: rgba(255, 255, 255, 0.95); width: 85%; max-width: 320px;
+            border-radius: 24px; padding: 25px 20px; text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            transform: translateY(20px) scale(0.95); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid var(--bs-red);
+        }
+        .modal-overlay.show .modal-box { transform: translateY(0) scale(1); }
+        .modal-icon { width: 60px; height: 60px; background: #ffebee; color: var(--bs-red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 15px; }
+        .modal-title { font-size: 18px; font-weight: 800; color: var(--bs-blue); margin-bottom: 8px; }
+        .modal-text { font-size: 13px; color: #555; margin-bottom: 20px; line-height: 1.5; font-weight: 500;}
     </style>
 </head>
 <body>
@@ -294,7 +275,7 @@
             <label>Layanan Service</label>
             <div class="service-trigger" onclick="toggleServices()" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
                 <span id="selected-count">Pilih menu...</span>
-                <i class="fas fa-chevron-down"></i>
+                <i id="service-icon" class="fas fa-chevron-down"></i>
             </div>
             <div id="service-list-container"></div>
         </div>
@@ -333,22 +314,29 @@
         <a href="https://facebook.com/nama_halaman_anda" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
     </div>
 
-    <footer>
-    
- <div class="maps-card">
-    <label><i class="fas fa-map-marker-alt" style="color: var(--bs-red);"></i> Lokasi Kami</label>
-    <div style="font-size: 11px; color: #666; margin-bottom: 10px;">Jl. Contoh Alamat No. 123, Kota Anda</div>
-    <div class="maps-container">
-        <iframe 
-            src="https://www.google.com/maps/embed/v1/place?key=API_KEY_KAMU&q=ALAMAT_BARBERSHOP_KAMU" 
-            allowfullscreen>
-        </iframe>
+    <div class="maps-card">
+        <label><i class="fas fa-map-marker-alt" style="color: var(--bs-red);"></i> Lokasi Kami</label>
+        <div style="font-size: 11px; color: #666; margin-bottom: 10px;">Jl. Contoh Alamat No. 123, Kota Anda</div>
+        <div class="maps-container">
+            <iframe 
+                src="https://www.google.com/maps/embed/v1/place?key=API_KEY_KAMU&q=ALAMAT_BARBERSHOP_KAMU" 
+                allowfullscreen>
+            </iframe>
+        </div>
     </div>
-</div>
-   
-    
-        &copy; 2026 Classic Barber Shop <br> Modern Style for Gentlemen
+
+    <footer>
+        © 2026 Classic Barber Shop <br> Modern Style for Gentlemen
     </footer>
+</div>
+
+<div class="modal-overlay" id="warningModal">
+    <div class="modal-box">
+        <div class="modal-icon"><i class="fas fa-exclamation-triangle"></i></div>
+        <h3 class="modal-title">Oops!</h3>
+        <p class="modal-text" id="warning-text">Lengkapi data Anda terlebih dahulu.</p>
+        <button class="btn-confirm" style="margin-top: 5px; padding: 12px; font-size: 14px;" onclick="closeWarningModal()">Mengerti</button>
+    </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
@@ -401,7 +389,10 @@ async function fetchData() {
 
                         const card = document.createElement('div');
                         card.className = 'service-item';
-                        card.onclick = () => selectService(card, `${item.nama} (Rp ${finalPrice.toLocaleString()})`);
+                        
+                        // LOGIKA BARU: MENGAMBIL KATEGORI DARI SPREADSHEET UNTUK PESAN WA
+                        const categoryText = item.kategori ? `[${item.kategori.toUpperCase()}] ` : '';
+                        card.onclick = () => selectService(card, `${categoryText}${item.nama} (Rp ${finalPrice.toLocaleString()})`);
                         
                         card.innerHTML = `
                             <div style="flex: 1; padding-right: 10px; display: flex; flex-direction: column; justify-content: center;">
@@ -437,17 +428,49 @@ function selectService(el, str) {
     document.getElementById('selected-count').innerText = selectedServices.length > 0 ? `${selectedServices.length} Dipilih` : "Pilih menu...";
 }
 
+// LOGIKA ANIMASI DROPDOWN BARU
 function toggleServices() {
     const c = document.getElementById('service-list-container');
-    c.style.display = (c.style.display === "none" || c.style.display === "") ? "grid" : "none";
+    const icon = document.getElementById('service-icon');
+    
+    c.classList.toggle('show');
+    if (c.classList.contains('show')) {
+        icon.classList.add('rotate');
+    } else {
+        icon.classList.remove('rotate');
+    }
 }
 
+// LOGIKA POPUP WARNING
+function showWarningModal(msg) {
+    document.getElementById('warning-text').innerText = msg;
+    const modal = document.getElementById('warningModal');
+    modal.style.display = 'flex';
+    setTimeout(() => { modal.classList.add('show'); }, 10);
+}
+
+function closeWarningModal() {
+    const modal = document.getElementById('warningModal');
+    modal.classList.remove('show');
+    setTimeout(() => { modal.style.display = 'none'; }, 300);
+}
+
+// MENGIRIM PESAN KE WHATSAPP (KATEGORI SUDAH OTOMATIS MENEMPEL DI LAYANAN)
 function sendBooking() {
     const name = document.getElementById('cust-name').value;
     const barber = document.getElementById('barber-select').value;
     const date = document.getElementById('book-date').value;
     const time = document.getElementById('book-time').value;
-    if(!name || !date || !time || selectedServices.length === 0) { alert("Lengkapi data!"); return; }
+    
+    if(!name || !date || !time) { 
+        showWarningModal("Mohon isi Nama Lengkap dan Waktu Reservasi terlebih dahulu."); 
+        return; 
+    }
+    if(selectedServices.length === 0) {
+        showWarningModal("Pilih minimal 1 Layanan Service (Menu) yang ingin di-booking.");
+        return;
+    }
+
     const pesan = `*MOHON KONFIRMASINYA BOOKING CLASSIC BARBER*\n--------------------------\n*Nama:* ${name}\n*Barber:* ${barber}\n*Layanan:* \n- ${selectedServices.join('\n- ')}\n*Jadwal:* ${date} @ ${time}\n--------------------------`;
     window.open(`https://wa.me/${CONFIG.WA_PHONE}?text=${encodeURIComponent(pesan)}`, '_blank');
 }
@@ -464,7 +487,7 @@ setInterval(() => {
 
 const hr = new Date().getHours();
 const elStatus = document.getElementById('shop-status');
-if(hr >= 10 && hr < 17) {
+if(hr >= 10 && hr < 21) {
     elStatus.innerText = "● BARBERSHOP BUKA"; elStatus.className = "status-badge status-open";
 } else {
     elStatus.innerText = "● BARBERSHOP TUTUP"; elStatus.className = "status-badge status-closed";
